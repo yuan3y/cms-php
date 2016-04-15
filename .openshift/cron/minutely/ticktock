@@ -1,0 +1,6 @@
+#!/bin/bash
+cur_min=$(date +"%M")
+if [ $cur_min -eq 0 -o $cur_min -eq 30 ];then
+    date >> ${OPENSHIFT_PHP_LOG_DIR}/ticktock.log
+    php ${OPENSHIFT_REPO_DIR}/job/social.php
+fi

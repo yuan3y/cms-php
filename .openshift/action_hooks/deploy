@@ -1,0 +1,21 @@
+#!/bin/bash
+cd $OPENSHIFT_REPO_DIR/lib
+echo $PWD
+cat <<EOT >mysql.php
+<?php
+
+class MySQL {
+  private static \$instance = NULL;
+
+  private function __construct() { }
+  private function __clone() { }
+
+  public static function getInstance() {
+    if (!self::\$instance) {
+      self::\$instance = new PDO('mysql:host='.getenv('OPENSHIFT_MYSQL_DB_HOST').';dbname=cms', getenv('OPENSHIFT_MYSQL_DB_USERNAME'), getenv('OPENSHIFT_MYSQL_DB_PASSWORD')); //change database name, username, password to your own
+      self::\$instance->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    }
+    return self::\$instance;
+  }
+}
+EOT

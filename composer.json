@@ -1,0 +1,9 @@
+{
+  "require" : {
+    "facebook/php-sdk-v4" : "~5.0",
+    "j7mbo/twitter-api-php": "dev-master",
+    "phpmailer/phpmailer": "~5.2",
+    "league/oauth2-google": "^1.0",
+    "twilio/sdk": "^4.10"
+  }
+}
